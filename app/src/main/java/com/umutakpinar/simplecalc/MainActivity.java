@@ -25,9 +25,20 @@ public class MainActivity extends AppCompatActivity {
         txtResult = findViewById(R.id.txtResult);
     }
 
-    public void getNumbers(){
+    public boolean getNumbers(){
+        if(editTextNumber.getText().toString().matches("") || editTextNumber2.getText().toString().matches("")){
+            txtResult.setTextSize(30);
+            txtResult.setText("Please enter only number");
+            editTextNumber.setText("");
+            editTextNumber2.setText("");
+            return false;
+        }
+        else{
+            txtResult.setTextSize(150);
             number1 = Double.parseDouble(editTextNumber.getText().toString());
             number2 = Double.parseDouble(editTextNumber2.getText().toString());
+            return true;
+        }
     }
 
     public void setTxtResult(double result){
@@ -35,23 +46,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void plus(View view){
-        getNumbers();
-        setTxtResult(number1 + number2);
+        if(getNumbers() == true){
+            setTxtResult(number1 + number2);
+        }
     }
 
     public void minus(View view){
-        getNumbers();
-        setTxtResult(number1 - number2);
+        if(getNumbers() == true){
+
+            setTxtResult(number1 - number2);
+        }
     }
 
     public void multiply(View view){
-        getNumbers();
-        setTxtResult(number1 * number2);
+        if(getNumbers() == true){
+
+            setTxtResult(number1 * number2);
+        }
     }
 
     public void divide(View view){
-        getNumbers();
-        setTxtResult(number1 / number2);
+        if(getNumbers() == true){
+
+            setTxtResult(number1 / number2);
+        }
     }
 
 }
